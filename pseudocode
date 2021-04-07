@@ -1,0 +1,7 @@
+pseudocode
+create - hero, ability, arch nemisis, rival, sidekick, love interest, parents
+read - all hero's, heroes that have , the flying ability, relationship type, love triangle, [ead records in the database, out of multiple tables]
+update - heros bio, new ability, lose ability, wins/loses (battles), sidekicks [modifies an existing record, where condition id- immutable number] 
+delete - cascade and delete the base or do a soft felete [delete the record, where condition - id = immutable number]
+
+actions
