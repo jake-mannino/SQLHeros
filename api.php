@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 function createBattle ($conn, $h1, $h2, $w) {
   $sql = "INSERT INTO battles (hero1, hero2, winner)
-  VALUES ($h1, $h2, $w)";
+  VALUES ('$h1', '$h2', '$w')";
 //   $record
 }
 function getAllHeroes ($conn){
