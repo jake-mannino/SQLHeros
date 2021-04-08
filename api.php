@@ -46,11 +46,11 @@ switch ($route) {
     break;
   case "getHeroByID":
     $id = $_GET['hero_id'];
-  case "createBattle"
+  case "createBattle":
     $myData = create_function($conn);
     break;
   default:
-        $myData = json_encode([])
+        $myData = json_encode([]);
 }
 echo $myData;
 $conn->close();
