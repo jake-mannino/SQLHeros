@@ -3,15 +3,12 @@
   $username = "root";
   $password = "YourNewPassword";
   $dbname = "SQLHeros2";
-  
 echo "yes";
   //create connection
   $conn= new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) { 
+if ($conn->connect_error) {
   die("connection failed:" .$conn->connect_error);
 }
-
 function createBattle ($conn, $h1, $h2, $w) {
     $sql = "INSERT INTO battles (hero1, hero2, winner) VALUES ('$h1', '$h2', '$w')";
 }
@@ -19,7 +16,6 @@ function getAllHeroes ($conn){
   $data = array();
   $sql = "SELECT * FROM heroes";
   $result = $conn->query($sql);
-  
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()){
       ///$data .="id:" . $row["id"]. "- Name: " . $row{''}
@@ -28,56 +24,44 @@ function getAllHeroes ($conn){
   }
   return json_encode($data);
 }
-
 function getHeroByID ($conn, $heroID){
   $data = array();
   $sql = 'SELECT * FROM heroes WHERE id = ' . $heroID;
-  $result = $conn->quey($sql); 
+  $result = $conn->query($sql);
 }
 function addHero (){
   $data = array();
   $sql = "INSERT INTO heroes (id, name, about_me, biography) VALUES ('7', 'Spaghet Man', 'touchs ur spaghet', 'is spaghet')";
-
-  if (mysqli_query($conn, $sql)) {
+  if ($conn->query($sql)) {
     echo "New hero added";
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
-    
-  mysqli_close($conn);
-  
+$conn->close();
 }
-  
 function deleteHero (){
   $data = array();
   $sql = "DELETE FROM heroes WHERE id=3";
-
-  if (mysqli_query($conn, $sql)) {
+  if ($conn->query($sql)) {
     echo "hero deleted successfully";
   } else {
     echo "Error deleting record: " . mysqli_error($conn);
   }
-  mysqli_close($conn);  
+$conn->close();
 }
-  
 function updateHero(){
   $data = array();
   $sql = "UPDATE heroes SET name='Spaget Man' WHERE id=7";
-
-  if (mysqli_query($conn, $sql)) {
+  if ($conn->query($sql)) {
     echo "Record updated successfully";
   } else {
     echo "Error updating record: " . mysqli_error($conn);
   }
-
-  mysqli_close($conn);
-  
+$conn->close();
 }
-
 $route = $_GET['route'];
 print_r($_GET);
 echo $route;
-
 switch ($route) {
   case "getAllHeroes":
     $myData = getAllHeroes($conn);
@@ -102,5 +86,4 @@ switch ($route) {
 }
 echo $myData;
 $conn->close();
-
 ?>
