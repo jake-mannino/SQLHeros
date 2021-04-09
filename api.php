@@ -55,9 +55,9 @@ function deleteHero (){
   $sql = "DELETE FROM heroes WHERE id=3";
 
 if (mysqli_query($conn, $sql)) {
-  echo "hero deleted successfully";
+  echo "Hero deleted successfully";
 } else {
-  echo "Error deleting record: " . mysqli_error($conn);
+  echo "Error deleting hero: " . mysqli_error($conn);
 }
 mysqli_close($conn);  
 }
@@ -67,15 +67,13 @@ function updateHero(){
   $sql = "UPDATE heroes SET name='Spaget Man' WHERE id=7";
 
 if (mysqli_query($conn, $sql)) {
-  echo "Record updated successfully";
+  echo "Hero updated successfully";
 } else {
-  echo "Error updating record: " . mysqli_error($conn);
+  echo "Error updating hero: " . mysqli_error($conn);
 }
-
 mysqli_close($conn);
   
 }
-
 $route = $_GET['route'];
 print_r($_GET);
   echo $route;
